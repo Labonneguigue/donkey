@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import time
+import numpy as np
 
 
 class Lambda:
@@ -84,3 +85,39 @@ class PIDController:
             print('PID output:', round(curr_alpha, 4))
 
         return curr_alpha
+
+class Cropper:
+    def __init__(self):
+        pass
+
+class Cropper:
+    def __init__(self, top, bottom, left, right):
+        self.top = top
+        self.bottom = bottom
+        self.right = right
+        self.left = left
+
+    @staticmethod
+    def crop(img, top_bottom=(0,0), left_right=(0,0)):
+        """
+        Crops an image by how many pixels from the top, bottom,
+        left and right.
+
+        Args:
+            img: 2D image
+            top_bottom: tuple with the number of pixels to remove from the top
+                first and from the bottom in second
+            left_right: tuple with the number of pixels to remove from the left first
+                and from the right second
+        Return:
+            img: Returns the cropped image
+        """
+        return img[top_bottom[0]:img.shape[0]-top_bottom[1], left_right[0]:img.shape[1]-left_right[1]]
+
+    def run(self, img):
+        return Cropper.crop(img,(self.top, self.bottom)
+                               ,(self.left, self.right))
+                               
+    def shutdown(self):
+        pass
+
